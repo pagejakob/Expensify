@@ -23,8 +23,8 @@ store.dispatch(
 );
 
 const state = store.getState();
-const VisibleExpenses = getVisibleExpenses(state.expenses, state.filters);
-console.log(VisibleExpenses);
+// const VisibleExpenses = getVisibleExpenses(state.expenses, state.filters);
+// console.log(VisibleExpenses);
 
 const jsx = (
   <Provider store={store}>
