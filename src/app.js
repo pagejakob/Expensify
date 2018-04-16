@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { Provider } from "react-redux";
 import AppRouter from "./routers/AppRouter";
 import configureStore from "./store/configureStore";
 import "normalize.css/normalize.css";
@@ -17,11 +18,18 @@ store.dispatch(
 store.dispatch(
   addExpense({ description: "Gas Bill", amount: 20000, createdAt: 1000001 })
 );
-
-store.dispatch(setTextFilter("Water"));
+store.dispatch(
+  addExpense({ description: "Rent", amount: 10000, createdAt: 1900001 })
+);
 
 const state = store.getState();
 const VisibleExpenses = getVisibleExpenses(state.expenses, state.filters);
 console.log(VisibleExpenses);
 
-ReactDOM.render(<AppRouter />, document.getElementById("app"));
+const jsx = (
+  <Provider store={store}>
+    <AppRouter />
+  </Provider>
+);
+
+ReactDOM.render(jsx, document.getElementById("app"));
